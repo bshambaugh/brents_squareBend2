@@ -1,0 +1,106 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 200;
+
+boundaryField
+{
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 200;
+        value           uniform 200;
+    }
+   inletFace
+   {
+        type            turbulentMixingLengthDissipationRateInlet;
+        mixingLength    0.005;
+        value           uniform 200;
+   }
+   inletWall
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   inletsourceFace
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   inletdestinationFace
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   fineMeshWall
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   fineMeshSourceFace
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   fineMeshdestinationFace
+   {
+        type            epsilonWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 200;
+   }
+   fineMeshSymmetryWall
+   {
+        type            symmetryPlane;
+   }
+   fineMeshOutletLeft
+   {
+        type            inletOutlet;
+        inletValue      uniform 200;
+        value           uniform 200;
+
+   }
+   fineMeshOutletBottom
+   {
+        type            inletOutlet;
+        inletValue      uniform 200;
+        value           uniform 200;
+
+   }
+
+}
+
+
+// ************************************************************************* //
